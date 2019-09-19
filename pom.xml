@@ -7,8 +7,8 @@
 
     <groupId>com.github.microtweak</groupId>
     <artifactId>jbx4j-parent</artifactId>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
 
     <modules>
         <module>descriptor-core</module>
