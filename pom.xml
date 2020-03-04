@@ -17,10 +17,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>descriptor-core</module>
-        <module>descriptor-hibernate</module>
-        <module>descriptor-eclipselink</module>
-        <module>serializer-jackson</module>
+        <module>core</module>
+        <module>jpa-eclipselink</module>
+        <module>jpa-hibernate</module>
+        <module>json-jackson</module>
     </modules>
 
     <name>jbx4j - JSON Binding eXtension for JPA</name>

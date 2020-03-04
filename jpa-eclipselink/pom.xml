@@ -11,13 +11,13 @@
         <version>1.1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>jbx4j-descriptor-eclipselink</artifactId>
-    <name>JPA Descriptor for EclipseLink (RI)</name>
+    <artifactId>jbx4j-eclipselink</artifactId>
+    <name>jbx4j - Support for EclipseLink (RI)</name>
 
     <dependencies>
         <dependency>
             <groupId>com.github.microtweak</groupId>
-            <artifactId>jbx4j-descriptor-core</artifactId>
+            <artifactId>jbx4j-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 
@@ -28,7 +28,7 @@
 
         <dependency>
             <groupId>com.github.microtweak</groupId>
-            <artifactId>jbx4j-descriptor-core</artifactId>
+            <artifactId>jbx4j-core</artifactId>
             <version>${project.version}</version>
             <classifier>tests</classifier>
             <scope>test</scope>
@@ -122,7 +122,7 @@
                                 <excludeTags>reflection</excludeTags>
                             </properties>
                             <dependenciesToScan>
-                                <dependency>com.github.microtweak:jbx4j-descriptor-core</dependency>
+                                <dependency>com.github.microtweak:jbx4j-core</dependency>
                             </dependenciesToScan>
                         </configuration>
                     </execution>

@@ -8,8 +8,8 @@
 [maven]:http://search.maven.org/#search|gav|1|g:"com.github.microtweak"%20AND%20a:"jbx4j"
 [maven img]:https://maven-badges.herokuapp.com/maven-central/com.github.microtweak/jbx4j/badge.svg
 
-[javadoc]:https://javadoc.io/doc/com.github.microtweak/jbx4j-descriptor-core
-[javadoc img]:https://javadoc.io/badge/com.github.microtweak/jbx4j-descriptor-core.svg
+[javadoc]:https://javadoc.io/doc/com.github.microtweak/jbx4j-core
+[javadoc img]:https://javadoc.io/badge/com.github.microtweak/jbx4j-core.svg
 
 [release]:https://github.com/microtweak/jbx4j/releases
 [release img]:https://img.shields.io/github/release/microtweak/jbx4j.svg
@@ -43,13 +43,13 @@ Framework       | Type | Minimal version | Note
     ```xml
     <dependency>
         <groupId>com.github.microtweak</groupId>
-        <artifactId>jbx4j-descriptor-hibernate</artifactId>
+        <artifactId>jbx4j-hibernate</artifactId>
         <version>1.0.0</version>
     </dependency>
    
     <dependency>
         <groupId>com.github.microtweak</groupId>
-        <artifactId>jbx4j-serializer-jackson</artifactId>
+        <artifactId>jbx4j-jackson</artifactId>
         <version>1.0.0</version>
     </dependency>
     ```
