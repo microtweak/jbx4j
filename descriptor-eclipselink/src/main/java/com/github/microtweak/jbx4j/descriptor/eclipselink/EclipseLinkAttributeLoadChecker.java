@@ -1,7 +1,7 @@
 package com.github.microtweak.jbx4j.descriptor.eclipselink;
 
-import com.github.microtweak.jbx4j.descriptor.core.exception.JpaLoadStateException;
-import com.github.microtweak.jbx4j.descriptor.core.spi.AttributeLoadChecker;
+import com.github.microtweak.jbx4j.descriptor.exception.JpaLoadStateException;
+import com.github.microtweak.jbx4j.descriptor.spi.AttributeLoadChecker;
 import org.eclipse.persistence.exceptions.DescriptorException;
 import org.eclipse.persistence.indirection.ValueHolderInterface;
 

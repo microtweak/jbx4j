@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>jbx4j-descriptor-core</artifactId>
-    <name>JPA Descriptor Core</name>
+    <name>JPA Core Module</name>
 
     <dependencies>
         <dependency>

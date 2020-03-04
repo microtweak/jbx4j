@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import com.github.microtweak.jbx4j.descriptor.core.JpaDescriptor;
-import com.github.microtweak.jbx4j.descriptor.core.attribute.*;
-import com.github.microtweak.jbx4j.descriptor.core.spi.ReflectionHelper;
-import com.github.microtweak.jbx4j.serializer.core.CircularReferenceDetector;
+import com.github.microtweak.jbx4j.descriptor.JpaDescriptor;
+import com.github.microtweak.jbx4j.descriptor.attribute.*;
+import com.github.microtweak.jbx4j.descriptor.spi.ReflectionHelper;
+import com.github.microtweak.jbx4j.serializer.CircularReferenceDetector;
 
 import java.io.IOException;
 import java.util.Collection;

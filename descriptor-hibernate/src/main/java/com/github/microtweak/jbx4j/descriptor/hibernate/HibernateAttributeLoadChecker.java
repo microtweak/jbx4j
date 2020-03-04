@@ -1,6 +1,6 @@
 package com.github.microtweak.jbx4j.descriptor.hibernate;
 
-import com.github.microtweak.jbx4j.descriptor.core.spi.AttributeLoadChecker;
+import com.github.microtweak.jbx4j.descriptor.spi.AttributeLoadChecker;
 
 import javax.persistence.Persistence;
 

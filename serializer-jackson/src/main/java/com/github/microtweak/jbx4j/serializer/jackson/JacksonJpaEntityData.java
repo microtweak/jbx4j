@@ -3,10 +3,10 @@ package com.github.microtweak.jbx4j.serializer.jackson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.microtweak.jbx4j.descriptor.core.JpaDescriptor;
-import com.github.microtweak.jbx4j.descriptor.core.attribute.EntityAttribute;
-import com.github.microtweak.jbx4j.descriptor.core.attribute.RelationshipEntityAttribute;
-import com.github.microtweak.jbx4j.serializer.core.resolver.JpaEntityData;
+import com.github.microtweak.jbx4j.descriptor.JpaDescriptor;
+import com.github.microtweak.jbx4j.descriptor.attribute.EntityAttribute;
+import com.github.microtweak.jbx4j.descriptor.attribute.RelationshipEntityAttribute;
+import com.github.microtweak.jbx4j.serializer.resolver.JpaEntityData;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

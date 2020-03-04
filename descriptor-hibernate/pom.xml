@@ -72,8 +72,8 @@
                 <artifactId>serviceloader-maven-plugin</artifactId>
                 <configuration>
                     <services>
-                        <param>com.github.microtweak.jbx4j.descriptor.core.spi.ReflectionHelper</param>
-                        <param>com.github.microtweak.jbx4j.descriptor.core.spi.AttributeLoadChecker</param>
+                        <param>com.github.microtweak.jbx4j.descriptor.spi.ReflectionHelper</param>
+                        <param>com.github.microtweak.jbx4j.descriptor.spi.AttributeLoadChecker</param>
                     </services>
                 </configuration>
             </plugin>

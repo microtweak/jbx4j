@@ -1,6 +1,6 @@
 package com.github.microtweak.jbx4j.descriptor.eclipselink;
 
-import com.github.microtweak.jbx4j.descriptor.core.spi.ReflectionHelper;
+import com.github.microtweak.jbx4j.descriptor.spi.ReflectionHelper;
 
 import java.lang.reflect.Field;
 

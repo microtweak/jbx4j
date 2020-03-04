@@ -20,8 +20,6 @@
         <module>descriptor-core</module>
         <module>descriptor-hibernate</module>
         <module>descriptor-eclipselink</module>
-
-        <module>serializer-core</module>
         <module>serializer-jackson</module>
     </modules>
 

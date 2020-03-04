@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.deser.BeanDeserializerModifier;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
-import com.github.microtweak.jbx4j.descriptor.core.spi.ReflectionHelper;
-import com.github.microtweak.jbx4j.serializer.core.resolver.EntityResolverManager;
+import com.github.microtweak.jbx4j.descriptor.spi.ReflectionHelper;
+import com.github.microtweak.jbx4j.serializer.resolver.EntityResolverManager;
 
 /**
  * @author Marcos Koch Salvador

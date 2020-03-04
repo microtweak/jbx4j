@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.microtweak</groupId>
-            <artifactId>jbx4j-serializer-core</artifactId>
+            <artifactId>jbx4j-descriptor-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 

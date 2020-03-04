@@ -7,12 +7,12 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.microtweak.jbx4j.descriptor.core.JpaDescriptor;
-import com.github.microtweak.jbx4j.descriptor.core.attribute.*;
-import com.github.microtweak.jbx4j.descriptor.core.spi.ReflectionHelper;
-import com.github.microtweak.jbx4j.serializer.core.exception.JpaEntityBindingException;
-import com.github.microtweak.jbx4j.serializer.core.resolver.EntityResolver;
-import com.github.microtweak.jbx4j.serializer.core.resolver.JpaEntityData;
+import com.github.microtweak.jbx4j.descriptor.JpaDescriptor;
+import com.github.microtweak.jbx4j.descriptor.attribute.*;
+import com.github.microtweak.jbx4j.descriptor.spi.ReflectionHelper;
+import com.github.microtweak.jbx4j.serializer.exception.JpaEntityBindingException;
+import com.github.microtweak.jbx4j.serializer.resolver.EntityResolver;
+import com.github.microtweak.jbx4j.serializer.resolver.JpaEntityData;
 
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;

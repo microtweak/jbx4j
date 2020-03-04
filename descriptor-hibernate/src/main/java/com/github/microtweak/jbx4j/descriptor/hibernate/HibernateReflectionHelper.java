@@ -1,6 +1,6 @@
 package com.github.microtweak.jbx4j.descriptor.hibernate;
 
-import com.github.microtweak.jbx4j.descriptor.core.spi.ReflectionHelper;
+import com.github.microtweak.jbx4j.descriptor.spi.ReflectionHelper;
 import org.hibernate.proxy.HibernateProxy;
 
 public class HibernateReflectionHelper extends ReflectionHelper {
