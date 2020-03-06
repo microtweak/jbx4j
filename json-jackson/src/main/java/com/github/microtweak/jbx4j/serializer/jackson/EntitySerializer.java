@@ -59,7 +59,7 @@ public class EntitySerializer extends JsonSerializer<Object> {
     private void serializeJpaRelationship(JsonGenerator jg, Object value, RelationshipEntityAttribute<?> attr, CircularReferenceDetector circularDetector) throws IOException {
         if (attr instanceof OneToOneRelationshipEntityAttribute || attr instanceof ManyToOneRelationshipEntityAttribute) {
 
-            if (circularDetector.contains(attr.getType())) {
+            if (circularDetector.containsExceptLastVisited(attr.getType())) {
                 return;
             }
 
@@ -76,7 +76,7 @@ public class EntitySerializer extends JsonSerializer<Object> {
                 return;
             }
 
-            if (circularDetector.contains(attr.getTypeParameters())) {
+            if (circularDetector.containsAny(attr.getTypeParameters())) {
                 return;
             }
 

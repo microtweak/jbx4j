@@ -1,8 +1,8 @@
 package com.github.microtweak.jbx4j.serializer;
 
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -13,15 +13,18 @@ import java.util.stream.Collectors;
  */
 public class CircularReferenceDetector {
 
-    private Set<Class<?>> classReferences;
+    private Map<Class<?>, Integer> classReferences;
+    private Class<?> lastVisited;
 
     public CircularReferenceDetector() {
-        classReferences = new LinkedHashSet<>();
+        classReferences = new LinkedHashMap<>();
     }
 
-    private CircularReferenceDetector(Set<Class<?>> classReferences) {
-        this();
-        this.classReferences.addAll(classReferences);
+    private CircularReferenceDetector(Map<Class<?>, Integer> parentReferences, Class<?> lastVisited) {
+        classReferences = new LinkedHashMap<>( parentReferences );
+        classReferences.merge(lastVisited, 1, (count, increment) -> count + increment);
+
+        this.lastVisited = lastVisited;
     }
 
     /**
@@ -31,9 +34,7 @@ public class CircularReferenceDetector {
      * @return true
      */
     public CircularReferenceDetector add(Class<?> clazz) {
-        CircularReferenceDetector ep = new CircularReferenceDetector(this.classReferences);
-        ep.classReferences.add(clazz);
-        return ep;
+        return new CircularReferenceDetector(this.classReferences, clazz);
     }
 
     /**
@@ -43,16 +44,16 @@ public class CircularReferenceDetector {
      * @return true if the class has already been visited or false otherwise.
      */
     public boolean contains(Class<?> clazz) {
-        return classReferences.contains(clazz);
+        return classReferences.containsKey(clazz);
     }
 
     /**
      * Checks if elements of a class list have already been visited
      *
-     * @param classes Class to be checked
+     * @param classes Classes to be checked
      * @return true if any class has already been visited or false otherwise.
      */
-    public boolean contains(List<Class<?>> classes) {
+    public boolean containsAny(Collection<Class<?>> classes) {
         for (Class<?> clazz : classes) {
             if (contains(clazz)) {
                 return true;
@@ -61,9 +62,16 @@ public class CircularReferenceDetector {
         return false;
     }
 
+    public boolean containsExceptLastVisited(Class<?> clazz) {
+        if (lastVisited != null && lastVisited.equals(clazz)) {
+            return classReferences.getOrDefault(clazz, 0) > 1;
+        }
+        return contains(clazz);
+    }
+
     @Override
     public String toString() {
-        return classReferences.stream().map(cls -> cls.getName()).collect(Collectors.joining(" => "));
+        return classReferences.keySet().stream().map(cls -> cls.getName()).collect(Collectors.joining(" => "));
     }
 
 }
