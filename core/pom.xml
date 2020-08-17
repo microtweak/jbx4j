@@ -16,6 +16,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
         </dependency>
@@ -68,7 +73,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>reflection</id>
+                        <id>default-test</id>
                         <phase>test</phase>
                         <goals>
                             <goal>test</goal>
@@ -76,7 +81,6 @@
                         <configuration>
                             <skip>false</skip>
                             <properties>
-                                <includeTags>reflection</includeTags>
                                 <excludeTags>persistence</excludeTags>
                             </properties>
                         </configuration>

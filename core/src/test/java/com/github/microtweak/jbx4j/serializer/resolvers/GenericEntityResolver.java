@@ -9,11 +9,6 @@ import java.util.List;
 public class GenericEntityResolver implements EntityResolver<Object> {
 
     @Override
-    public boolean canResolve(Object parent, Class<Object> rawType, JpaEntityData<Object> data, List<Annotation> annotations) {
-        return true;
-    }
-
-    @Override
     public Object resolve(Object parent, Class<Object> rawType, JpaEntityData<Object> data, List<Annotation> annotations) {
         return new Object();
     }

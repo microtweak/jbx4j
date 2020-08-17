@@ -14,11 +14,6 @@ public class StringEntityResolver implements EntityResolver<String> {
     }
 
     @Override
-    public boolean canResolve(Object parent, Class<String> rawType, JpaEntityData<String> data, List<Annotation> annotations) {
-        return String.class.isAssignableFrom(rawType);
-    }
-
-    @Override
     public String resolve(Object parent, Class<String> rawType, JpaEntityData<String> data, List<Annotation> annotations) {
         return "";
     }

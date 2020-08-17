@@ -54,6 +54,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
             <!--  -->
             <dependency>
                 <groupId>javax.persistence</groupId>
