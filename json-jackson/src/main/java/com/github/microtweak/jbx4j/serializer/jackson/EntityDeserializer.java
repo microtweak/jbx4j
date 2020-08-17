@@ -174,9 +174,9 @@ public class EntityDeserializer extends JsonDeserializer<Object> {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     private <E> Object resolveJpaEntity(Object parent, Class<E> rawType, JsonNode jsonNode, List<Annotation> annotations) throws JsonProcessingException {
-        JpaEntityData<E> data = new JacksonJpaEntityData<>(rawType, mapper, jsonNode);
+        final JpaEntityData<E> data = new JacksonJpaEntityData<>(rawType, mapper, jsonNode);
 
-        EntityResolver resolver = module.getResolverManager().lookupResolver(parent, rawType, data, annotations);
+        EntityResolver resolver = module.getResolverManager().lookupResolver(parent, rawType, annotations);
         return resolver.resolve(parent, rawType, data, annotations);
     }
 

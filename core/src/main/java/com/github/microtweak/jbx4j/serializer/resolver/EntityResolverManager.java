@@ -3,10 +3,8 @@ package com.github.microtweak.jbx4j.serializer.resolver;
 import com.github.microtweak.jbx4j.serializer.exception.JpaEntityResolverNotFoundException;
 
 import java.lang.annotation.Annotation;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static java.util.Comparator.comparing;
 
@@ -20,6 +18,9 @@ public class EntityResolverManager {
 
     @SuppressWarnings("rawtypes")
     private Set<EntityResolver> resolvers = new HashSet<>();
+
+    @SuppressWarnings("rawtypes")
+    private Map<ResolverPoint, EntityResolver> cache = new ConcurrentHashMap<>();
 
     /**
      * Registers an EntityResolver by instance.
@@ -56,7 +57,6 @@ public class EntityResolverManager {
      * @param parent If you are resolving an entity that is a nested attribute/property, this parameter represents the object that contains this attribute/property.
      *               If the entity represents the root element of JSON (or any other format) this parameter will be null.
      * @param rawType Class representing the JPA Entity.
-     * @param data Component that transports JSON information (or any other format).
      * @param annotations If you are resolving an entity that is a nested attribute / property, this parameter will represent a List with all annotations of this attribute / property. Otherwise, it will be an empty list.
      *
      * @return EntityResolver instance chosen to resolve the requested Entity.
@@ -64,19 +64,21 @@ public class EntityResolverManager {
      * @throws JpaEntityResolverNotFoundException If no EntityResolver is able to resolve the requested Entity.
      */
     @SuppressWarnings("unchecked")
-    public EntityResolver<?> lookupResolver(Object parent, Class<?> rawType, JpaEntityData<?> data, List<Annotation> annotations) {
+    public EntityResolver<?> lookupResolver(Object parent, Class<?> rawType, List<Annotation> annotations) {
         Objects.requireNonNull(rawType, "Failed to execute the search EntityResolver. The \"rawType\" parameter is required to perform the search!");
-        Objects.requireNonNull(data, "Failed to execute the search EntityResolver. The \"data\" parameter is required to perform the search!");
         Objects.requireNonNull(annotations, "Failed to execute the search EntityResolver. The \"annotations\" parameter is required to perform the search!");
 
-        EntityResolver<?> resolver = resolvers.stream()
-                .filter(er -> er.canResolve(parent, rawType, data, annotations))
+        final ResolverPoint rp = new ResolverPoint(parent, rawType, annotations);
+
+        final EntityResolver<?> resolver = cache.computeIfAbsent(rp, nonCached -> resolvers.stream()
+                .filter(er -> er.canResolve(nonCached.getParentType(), nonCached.getRawType(), nonCached.getAnnotations()))
                 .sorted(comparing(er -> ((EntityResolver) er).getOrdinal()).reversed())
                 .findFirst()
-                .orElse(null);
+                .orElse(null)
+        );
 
         if (resolver == null) {
-            String msg = String.format("No EntityResolver found for entity \"%s\"!", rawType.getName());
+            final String msg = String.format("No EntityResolver found for entity \"%s\"!", rawType.getName());
             throw new JpaEntityResolverNotFoundException(msg);
         }
 
