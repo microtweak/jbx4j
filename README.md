@@ -44,13 +44,13 @@ Framework       | Type | Minimal version | Note
     <dependency>
         <groupId>com.github.microtweak</groupId>
         <artifactId>jbx4j-hibernate</artifactId>
-        <version>1.0.0</version>
+        <version>${jbx4j.version}</version>
     </dependency>
    
     <dependency>
         <groupId>com.github.microtweak</groupId>
         <artifactId>jbx4j-jackson</artifactId>
-        <version>1.0.0</version>
+        <version>${jbx4j.version}</version>
     </dependency>
     ```
 

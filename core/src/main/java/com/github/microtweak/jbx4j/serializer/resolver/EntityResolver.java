@@ -1,6 +1,9 @@
 package com.github.microtweak.jbx4j.serializer.resolver;
 
+import org.apache.commons.lang3.reflect.TypeUtils;
+
 import java.lang.annotation.Annotation;
+import java.lang.reflect.TypeVariable;
 import java.util.List;
 
 /**
@@ -35,14 +38,16 @@ public interface EntityResolver<E> {
     /**
      * Checks whether the EntityResolver instance is able to resolve the Entity.
      *
-     * @param parent If you are resolving an entity that is a nested attribute/property, this parameter represents the object that contains this attribute/property.
+     * @param parentType If you are resolving an entity that is a nested attribute/property, this parameter represents the type of the object that contains this attribute/property.
      *               If the entity represents the root element of JSON (or any other format) this parameter will be null.
      * @param rawType Class representing the JPA Entity.
-     * @param data Component that transports JSON information (or any other format).
      * @param annotations If you are resolving an entity that is a nested attribute / property, this parameter will represent a List with all annotations of this attribute / property. Otherwise, it will be an empty list.
      * @return true if the EntityResolver instance is able to resolve the entity. Otherwise false.
      */
-    boolean canResolve(Object parent, Class<E> rawType, JpaEntityData<E> data, List<Annotation> annotations);
+    default boolean canResolve(Class<?> parentType, Class<E> rawType, List<Annotation> annotations) {
+        final TypeVariable<?> typeVar = EntityResolver.class.getTypeParameters()[0];
+        return TypeUtils.getRawType(typeVar, getClass()).isAssignableFrom(rawType);
+    }
 
     /**
      * Performs the resolution logic of JPA Entity.

@@ -14,11 +14,6 @@ public class CharSeqEntityResolver implements EntityResolver<CharSequence> {
     }
 
     @Override
-    public boolean canResolve(Object parent, Class<CharSequence> rawType, JpaEntityData<CharSequence> data, List<Annotation> annotations) {
-        return CharSequence.class.isAssignableFrom(rawType);
-    }
-
-    @Override
     public CharSequence resolve(Object parent, Class<CharSequence> rawType, JpaEntityData<CharSequence> data, List<Annotation> annotations) {
         return "";
     }
