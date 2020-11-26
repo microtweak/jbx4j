@@ -62,6 +62,12 @@ public class CircularReferenceDetector {
         return false;
     }
 
+    /**
+     * Checks if the class has already been visited, ignoring the last visited class
+     *
+     * @param clazz Class to be checked
+     * @return true if the class has already been visited or false otherwise.
+     */
     public boolean containsExceptLastVisited(Class<?> clazz) {
         if (lastVisited != null && lastVisited.equals(clazz)) {
             return classReferences.getOrDefault(clazz, 0) > 1;
